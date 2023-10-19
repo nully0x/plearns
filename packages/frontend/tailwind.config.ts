@@ -9,9 +9,8 @@ const config: Config = {
   theme: {
     extend: {
       backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+       hero:"url(/images/hero-bg.png)",
+       test:"url(/images/test.png)"
       },
       colors:{
         primary:{
@@ -20,7 +19,9 @@ const config: Config = {
           orange:"#FFA500",
           coral:"#FF6347",
           blue:"#3498DB",
-          yellow:"#FFD700"
+          yellow:"#FFD700",
+          gray:"#1E1E1E",
+          gray_body:"#404040"
         },
        light:{
           white:"#FFFFFF",
@@ -31,11 +32,19 @@ const config: Config = {
             4:"#DEDEDE",
             5:"#BBBBBB",
             6:"#999999",
-            7:"#777777"
+            7:"#777777",
           }
-
+        },
+        dark:{
+          1:"#000F15" // dark gray
         }
-      }
+      },
+      boxShadow:{
+        "button":"0px 1px 3px 1px rgba(0, 0, 0, 0.15), 0px 1px 2px 0px rgba(0, 0, 0, 0.30)"
+      },
+      fontFamily:{
+        "sofia-pro":"Sofia Pro, sans-serif;"
+      },
     },
   },
   plugins: [],
