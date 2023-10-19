@@ -1,27 +1,26 @@
-import React, { useState } from 'react'
-import BitcoinLogo from '../assets/BitcoinLogo'
-import { navBarLinks } from '@/data/dummy'
-import LinkBar from './LinkBar';
-import { FilledButton } from '../common/Button';
+import React, { useState } from "react";
+import BitcoinLogo from "../assets/BitcoinLogo";
+import { navBarLinks } from "@/data/dummy";
+import LinkBar from "./LinkBar";
+import { FilledButton, GhostButton, OutlinedButton } from "../common/Button";
 
 const NavBar = () => {
-    const [navBar] = useState(navBarLinks);
+  const [navBar] = useState(navBarLinks);
   return (
-    <div className='flex w-full h-[100px] pt-10 px-4 xl:px-24 justify-between'>
-       <BitcoinLogo /> 
-       <div className='flex gap-6 '>
-            {navBar.map(({link,text})=> <LinkBar text={text} link={link} />)}
-       </div>
+    <div className="flex w-full bg-white border-b border-b-light-neutral-4 items-center h-[100px] pt-10 px-4 xl:px-24 justify-between">
+      <BitcoinLogo />
+      <div className="flex gap-6 ">
+        {navBar.map(({ link, text }) => (
+          <LinkBar key={text} text={text} link={link} />
+        ))}
+      </div>
 
-    <div>
-
+      <div className="flex gap-4">
+        <GhostButton>Login</GhostButton>
+        <FilledButton>Signup</FilledButton>
+      </div>
     </div>
+  );
+};
 
-    <FilledButton>
-        Signup
-    </FilledButton>
-    </div>
-  )
-}
-
-export default NavBar
+export default NavBar;

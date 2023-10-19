@@ -12,7 +12,7 @@ const LinkBar = ({ text, link }: { text: string; link: string }) => {
     >
       <a
         href={link}
-        className={`${isActive ? "text-primary-green" : "text-[#404040]"}`}
+        className={`${isActive ? "text-primary-green" : "text-[#404040]"} leading-[57px]`}
       >
         {text}
       </a>
