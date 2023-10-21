@@ -1,5 +1,5 @@
-import BitcoinBigLogo from "@/components/assets/BitcoinBig";
 import TopBar from "@/components/auth/Topbar";
+import Plearn from "@/components/common/Plearn";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -18,7 +18,7 @@ export default function AuthLayout({
         <TopBar />
         <div className="flex mt-24 flex-col pb-20">
           <div className="w-full flex justify-center">
-            <BitcoinBigLogo />
+            <Plearn />
           </div>
 
           {children}

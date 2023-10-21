@@ -1,5 +1,6 @@
 "use client";
 
+import PasswordStrength from "@/components/auth/PasswordStrength";
 import { FilledButton } from "@/components/common/Button";
 import Input, { PasswordInput } from "@/components/common/Input";
 import Link from "next/link";
@@ -18,6 +19,7 @@ export default function LoginPage() {
       <form className="flex flex-col gap-[45px]">
         <div className="flex flex-col gap-6">
           <Input placeholder="Enter Email" />
+          <PasswordStrength />
           <div className="flex justify-end">
             <Link
               href="/auth/forgot-password"

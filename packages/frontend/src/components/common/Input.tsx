@@ -1,4 +1,10 @@
-import React, { FC, HtmlHTMLAttributes, useState } from "react";
+import React, {
+  FC,
+  HtmlHTMLAttributes,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import EyeOpen from "../assets/EyeOpen.";
 import EyeSlash from "../assets/EyeSlash";
 
@@ -7,6 +13,17 @@ interface ButtonProps extends HtmlHTMLAttributes<HTMLInputElement> {
 }
 const Input: FC<ButtonProps> = ({ placeholder, ...prop }) => {
   const [focus, setFocus] = useState(false);
+  const inputRef = useRef<any>();
+  const [isInputValue, setIsInputValue] = useState(false);
+  useEffect(() => {
+    if (inputRef) {
+      if (inputRef?.current?.value?.length > 0) {
+        setIsInputValue(true);
+      } else {
+        setIsInputValue(false);
+      }
+    }
+  }, [inputRef?.current?.value]);
   return (
     <div
       onFocus={() => setFocus(true)}
@@ -17,14 +34,15 @@ const Input: FC<ButtonProps> = ({ placeholder, ...prop }) => {
     >
       <p
         className={`${
-          focus ? "translate-y-0 text-[13px]" : "translate-y-3 text-base"
+          (isInputValue || focus )  ? "translate-y-0 text-[13px]" : "translate-y-3 text-base"
         } transition-all ease-in-out text-light-neutral-5 `}
       >
         {placeholder}
       </p>
       <input
+        ref={inputRef}
         className={`${
-          focus ? "opacity-1" : "opacity-0"
+          (isInputValue || focus ) ? "opacity-1" : "opacity-0"
         } w-full  focus:outline-none bg-transparent text-dark-1`}
       />
     </div>
@@ -33,7 +51,18 @@ const Input: FC<ButtonProps> = ({ placeholder, ...prop }) => {
 
 export const PasswordInput: FC<ButtonProps> = ({ placeholder, ...prop }) => {
   const [focus, setFocus] = useState(false);
+  const inputRef = useRef<any>();
   const [show, setShow] = useState(false);
+  const [isInputValue, setIsInputValue] = useState(false);
+  useEffect(() => {
+    if (inputRef) {
+      if (inputRef?.current?.value?.length > 0) {
+        setIsInputValue(true);
+      } else {
+        setIsInputValue(false);
+      }
+    }
+  }, [inputRef?.current?.value]);
   return (
     <div
       onFocus={() => setFocus(true)}
@@ -44,16 +73,20 @@ export const PasswordInput: FC<ButtonProps> = ({ placeholder, ...prop }) => {
     >
       <p
         className={`${
-          focus ? "translate-y-0 text-[13px]" : "translate-y-3 text-base"
+          (isInputValue || focus )  ? "translate-y-0 text-[13px]" : "translate-y-3 text-base"
         } transition-all ease-in-out text-light-neutral-5 `}
       >
         {placeholder}
       </p>
-      <div className={` ${focus ? "opacity-1" : "opacity-0"} flex  justify-between items-center  `}>
+      <div
+        className={` ${
+          (isInputValue || focus )  ? "opacity-1" : "opacity-0"
+        } flex  justify-between items-center  `}
+      >
         <input
-        type={show?"text":"password"}
+          type={show ? "text" : "password"}
           className={`${
-            focus ? "opacity-1" : "opacity-0"
+            (isInputValue || focus )  ? "opacity-1" : "opacity-0"
           } w-full  focus:outline-none bg-transparent text-dark-1`}
         />
         {show ? (
