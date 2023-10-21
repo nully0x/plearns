@@ -54,3 +54,17 @@ export async function requireAuth(
     return next();
   });
 }
+
+// export function isAgent(req: Request, res: Response, next: NextFunction) {
+//   if (req.user.role !== 'agent') {
+//     return res.status(401).send({ message: "Unauthorized" });
+//   }
+//   return next();
+// }
+
+// export function isAmin(req: Request, res: Response, next: NextFunction) {
+//   if (req.user.role !== 'admin') {
+//     return res.status(401).send({ message: "Unauthorized" });
+//   }
+//   return next();
+// }
