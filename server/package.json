@@ -9,9 +9,9 @@
   "private": true,
   "scripts": {
     "start": "node dist/server.js",
-    "dev": "tsc-watch --onSuccess \"node ./dist/server.js\"",
-    "build": "rm -rf ./dist && npx tsc",
-    "postinstall": "yarn run build",
+    "dev": "npx ts-node ./src/server.ts",
+    "build": "rm -rf ./dist/ && npx tsc --project tsconfig.json",
+    "db:generate": "npx prisma generate",
     "prettier": "prettier --write --ignore-unknown .",
     "prettier:check": "prettier --check --ignore-unknown ."
   },

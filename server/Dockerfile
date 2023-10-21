@@ -4,7 +4,7 @@ WORKDIR /usr/src/app
 
 COPY package*.json ./
 
-RUN yarn --immutable --immutable-cache --check-cache
+RUN yarn install --no-cache
 
 COPY . .
 
@@ -12,6 +12,8 @@ RUN chmod 777 node_modules
 
 RUN yarn run build
 
-EXPOSE 8080/tcp
+RUN yarn run db:generate
+
+EXPOSE 3000/tcp
 
 CMD ["node", "./dist/server.js"]
