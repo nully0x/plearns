@@ -1,16 +1,13 @@
 {
   "name": "plearns",
-  "version": "0.0.1",
-  "description": "A platform for microtransaction and microtask for ligthining network",
+  "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/nully0x/plearns.git",
   "author": "Samson Olusegun <olusegunsamson@live.com>",
   "license": "MIT",
   "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
-  "devDependencies": {
-    "lerna": "^7.3.1"
-  }
+  "workspaces":[
+    "server",
+    "frontend"
+  ]
 }

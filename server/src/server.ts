@@ -34,8 +34,6 @@ app.use(
   })
 );
 
-console.log("I ran")
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -46,4 +44,4 @@ app.get("/", (req: Request, res: Response) =>
 
 authRoutes(app);
 
-app.listen(port, () => console.log(`listening on port ${port}!`));
+app.listen(port, () => console.log(`listening on port ${port}`));

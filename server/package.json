@@ -10,9 +10,7 @@
   "scripts": {
     "start": "node dist/server.js",
     "dev": "tsc-watch --onSuccess \"node ./dist/server.js\"",
-    "prod": "node ./dist/server.js",
-    "clean": "rm -rf dist && true",
-    "build": "yarn run clean && tsc",
+    "build": "rm -rf ./dist && npx tsc",
     "postinstall": "yarn run build",
     "prettier": "prettier --write --ignore-unknown .",
     "prettier:check": "prettier --check --ignore-unknown ."
