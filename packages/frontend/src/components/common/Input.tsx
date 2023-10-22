@@ -17,13 +17,13 @@ const Input: FC<ButtonProps> = ({ placeholder, ...prop }) => {
   const [isInputValue, setIsInputValue] = useState(false);
   useEffect(() => {
     if (inputRef) {
-      if (inputRef?.current?.value?.length > 0) {
+      if (inputRef?.current?.value) {
         setIsInputValue(true);
       } else {
         setIsInputValue(false);
       }
     }
-  }, [inputRef?.current?.value]);
+  }, [inputRef, focus]);
   return (
     <div
       onFocus={() => setFocus(true)}
@@ -56,13 +56,13 @@ export const PasswordInput: FC<ButtonProps> = ({ placeholder, ...prop }) => {
   const [isInputValue, setIsInputValue] = useState(false);
   useEffect(() => {
     if (inputRef) {
-      if (inputRef?.current?.value?.length > 0) {
+      if (inputRef?.current?.value) {
         setIsInputValue(true);
       } else {
         setIsInputValue(false);
       }
     }
-  }, [inputRef?.current?.value]);
+  }, [inputRef, focus]);
   return (
     <div
       onFocus={() => setFocus(true)}
@@ -84,6 +84,7 @@ export const PasswordInput: FC<ButtonProps> = ({ placeholder, ...prop }) => {
         } flex  justify-between items-center  `}
       >
         <input
+        ref={inputRef}
           type={show ? "text" : "password"}
           className={`${
             (isInputValue || focus )  ? "opacity-1" : "opacity-0"

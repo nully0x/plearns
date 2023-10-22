@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import './globals.css'
-
+import "./globals.css"
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -16,7 +15,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="bg-hero bg-cover bg-no-repeat w-full h-screen" >{children}</body>
+      <body className="flex bg-white  bg-none flex-col">{children}</body>
     </html>
   )
 }

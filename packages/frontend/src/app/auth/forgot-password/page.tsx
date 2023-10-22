@@ -19,7 +19,7 @@ export default function LoginPage() {
       <form className="flex flex-col gap-[45px]">
         <div className="flex flex-col gap-6">
           <Input placeholder="Enter Email" />
-          <PasswordStrength />
+
           <div className="flex justify-end">
             <Link
               href="/auth/forgot-password"
