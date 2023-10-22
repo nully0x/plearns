@@ -1,9 +1,7 @@
-interface IUser {
+export interface IUser {
     id: string;
-    name: string;
+    fullName: string;
     email: string;
     password: string;
-    avatar: string;
-    createdAt: Date;
-    updatedAt: Date;
+    phoneNumber: string;
 }
