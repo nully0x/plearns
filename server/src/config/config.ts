@@ -8,4 +8,5 @@ export const config  = {
     port: process.env.PORT,
     email: process.env.EMAIL,
     pass: process.env.PASS,
+    api_toolkit_key: process.env.APITOOLKIT_KEY as string,
 }
