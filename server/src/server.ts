@@ -1,10 +1,4 @@
-import express, {
-  Application,
-  Response,
-  Request,
-  NextFunction,
-  Express,
-} from "express";
+import express from "express";
 import { config } from "./config/config";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
@@ -12,36 +6,44 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import { ALLOWED_ORIGINS } from './utils/constants';
 import { authRoutes } from "./api/v1/auth";
+import APIToolkit from 'apitoolkit-express';
 
 dotenv.config();
 
-const app: Express = express();
-const port = config.port;
+async function startServer() {
+  const app = express();
+  const port = config.port;
 
-app.use(
-  cors({
-    allowedHeaders: [
-      "Origin",
-      "X-Requested-With",
-      "Content-Type",
-      "Accept",
-      "X-Access-Token",
-      "Authorization",
-    ],
-    methods: "GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE",
-    preflightContinue: false,
-    origin: ALLOWED_ORIGINS,
-  })
-);
+  const apitoolkitClient = await APIToolkit.NewClient({ apiKey: config.api_toolkit_key });
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
+  app.use(
+    cors({
+      allowedHeaders: [
+        "Origin",
+        "X-Requested-With",
+        "Content-Type",
+        "Accept",
+        "X-Access-Token",
+        "Authorization",
+      ],
+      methods: "GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE",
+      preflightContinue: false,
+      origin: ALLOWED_ORIGINS,
+    })
+  );
 
-app.get("/", (req: Request, res: Response) =>
-  res.send("welcome to PLEarn API!")
-);
+  app.use(bodyParser.json());
+  app.use(bodyParser.urlencoded({ extended: false }));
+  app.use(cookieParser());
+  app.use(apitoolkitClient.expressMiddleware);
 
-authRoutes(app);
+  app.get("/", (req, res) =>
+    res.send("Welcome to PLEarn API!")
+  );
 
-app.listen(port, () => console.log(`listening on port ${port}`));
+  authRoutes(app);
+
+  app.listen(port, () => console.log(`Listening on port ${port}`));
+}
+
+startServer();

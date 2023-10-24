@@ -22,4 +22,5 @@
 - After installing the dependencies, run `yarn dev` to start the frontend.
 
 ## URLs
+
 - [plearns-frontend.vercel.app](https://plearns-frontend.vercel.app/)
