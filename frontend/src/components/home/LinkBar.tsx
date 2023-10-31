@@ -8,7 +8,7 @@ const LinkBar = ({ text, link }: { text: string; link: string }) => {
     <div
       className={`${
         isActive ? "border-b border-primary-green" : ""
-      } font-bold flex flex-col  text-base`}
+      } font-semibold flex flex-col  text-base`}
     >
       <a
         href={link}
