@@ -43,7 +43,11 @@
     src: url('/fonts/Sofia-Pro-ExtraLight.otf') format('opentype');
     font-weight: 200;
 }
-
+@layer components {
+    .bg-container  {
+      @apply mx-auto px-6  w-full max-w-[100%] md:max-w-[90%];
+    }
+  }
 body {
     background-color: white;
     font-family: 'Sofia Pro', sans-serif;
